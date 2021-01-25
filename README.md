@@ -1,6 +1,8 @@
 docker-backup
 =============
-Fork from: https://github.com/boombatower/docker-backup
+Fork from: https://github.com/piscue/docker-backup.git
+which was a fork from
+  Fork from: https://github.com/boombatower/docker-backup
 
 My approach is to create a light image using *Alpine*.
 Respecting the original documentation but skipping S3 option:
@@ -66,7 +68,7 @@ To dump backup archive from `data-container` into current directory:
 $ docker run --rm \
   --volumes-from data-container \
   -v $(pwd):/backup \
-  piscue/docker-backup backup
+  alanjohnwilliams/docker-backup backup
 ```
 
 To restore:
@@ -74,7 +76,7 @@ To restore:
 $ docker run --rm \
   --volumes-from data-container \
   -v $(pwd):/backup \
-  piscue/docker-backup restore
+  alanjohnwilliams/docker-backup restore
 ```
 
 To use a date based file name and add `--verbose` flag to tar command:
@@ -83,7 +85,7 @@ $ docker run --rm \
   --volumes-from data-container \
   -v $(pwd):/backup \
   -e TAR_OPTS="--verbose" \
-  piscue/docker-backup backup "$(date +%F_%R).tar.xz"
+  alanjohnwilliams/docker-backup backup "$(date +%F_%R).tar.xz"
 ```
 
 One interesting option would be to remove the `--rm` flag a simply let the
@@ -102,4 +104,5 @@ backup service are provided in [doc directory](doc).
 docker registry
 ---------------
 The Docker registry repositories can be found at:
-- https://registry.hub.docker.com/u/piscue/docker-backup
+- https://registry.hub.docker.com/u/alanjohnwilliams/docker-backup
+  which is a fork of https://registry.hub.docker.com/u/piscue/docker-backup
